@@ -12,6 +12,8 @@ public class knuthMorrisPratt implements algorithm {
         int[] longest = new int[patLen];
         int j = 0; // index for pat[]
 
+        boolean found =false;
+
         // Preprocessing the pattern
         preprocess(pat, patLen, longest);
 
@@ -22,7 +24,8 @@ public class knuthMorrisPratt implements algorithm {
                 i++;
             }
             if (j == patLen) {
-                System.out.println(name+" found pattern at index " + (i - j));
+                System.out.println(name+" found the pattern at index " + (i - j));
+                found = true;
                 j = longest[j - 1];
             }
 
@@ -32,6 +35,13 @@ public class knuthMorrisPratt implements algorithm {
                 else
                     i = i + 1;
             }
+        }
+        if(patLen==0 && textLen==0){ //empty search
+            System.out.println(name+" found the pattern at index 0");
+            found=true;
+        }
+        if(!found){
+            System.out.println(name+" couldn't find the pattern");
         }
     }
     public void preprocess(String pat, int patLen, int[] longest){
