@@ -37,7 +37,9 @@ public class knuthMorrisPratt implements algorithm {
     public void preprocess(String pat, int patLen, int[] longest){
         int len = 0;
         int i = 1;
-        longest[0] = 0; // longest[0] is always 0
+        if(patLen>0){
+            longest[0] = 0; // longest[0] is always 0
+        }
         //calculates longest[i] for i = 1 to patLen-1
         while (i < patLen) {
             if (pat.charAt(i) == pat.charAt(len)) {
